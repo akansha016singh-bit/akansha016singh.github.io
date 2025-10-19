@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akansha Singh - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #4338CA 0%, #6366F1 100%);
+            color: white;
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4338CA 0%, #6366F1 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #4338CA;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #4338CA;
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2d3748;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #4338CA 0%, #6EE7B7 100%);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #4a5568;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-item h3 {
+            color: #4338CA;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #4338CA 0%, #6366F1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .project-content p {
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: #D1FAE5;
+            color: #047857;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Experience Section */
+        .experience-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            border-left: 4px solid #4338CA;
+        }
+
+        .experience-header {
+            margin-bottom: 1rem;
+        }
+
+        .experience-header h3 {
+            color: #2d3748;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .company {
+            color: #4338CA;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .duration {
+            color: #718096;
+            font-style: italic;
+        }
+
+        .experience-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #4a5568;
+        }
+
+        .experience-card li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #4338CA;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #4338CA;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">AS</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Akansha Singh</h1>
+            <p class="subtitle">Quality Assurance Specialist</p>
+            <p>Detail-oriented professional with expertise in content review, quality control, and digital design. Passionate about delivering excellence through systematic processes and creative solutions.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#projects" class="btn btn-secondary">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I am a Quality Assurance professional with over a year of experience in content review and quality control. My journey has been driven by a commitment to excellence, maintaining a 98% accuracy rate while processing high volumes of work.</p>
+                <p>Beyond my professional expertise in QA, I have a creative side that flourishes through digital design, creative writing, and music. I've completed 3 years of training in the National Cadet Corps, which instilled in me strong leadership, discipline, and teamwork skills.</p>
+                <p>I believe in the perfect balance between analytical precision and creative expression, bringing both dimensions to every project I undertake.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3>Quality Assurance</h3>
+                    <p>Systematic review & error detection</p>
+                </div>
+                <div class="skill-item">
+                    <h3>MS Office Suite</h3>
+                    <p>Advanced proficiency</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Content Review</h3>
+                    <p>Analysis & quality control</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Digital Design</h3>
+                    <p>Posters & certificates</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Team Leadership</h3>
+                    <p>Training & mentoring</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Time Management</h3>
+                    <p>Task prioritization & delivery</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">📚</div>
+                <div class="project-content">
+                    <h3>Educational Content Solutions</h3>
+                    <p>Created comprehensive educational materials for an online learning platform, focusing on English grammar and language connectors. Developed clear, analytical solutions with visual explanations to enhance student understanding.</p>
+                    <div class="project-tags">
+                        <span class="tag">Content Creation</span>
+                        <span class="tag">Educational Design</span>
+                        <span class="tag">Analysis</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">📖</div>
+                <div class="project-content">
+                    <h3>Book Cover Designs</h3>
+                    <p>Designed a collection of custom book covers for personal reading projects. Each design reflects the essence and mood of the literary work, combining typography, color theory, and visual storytelling.</p>
+                    <div class="project-tags">
+                        <span class="tag">Graphic Design</span>
+                        <span class="tag">Typography</span>
+                        <span class="tag">Creative Arts</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">✨</div>
+                <div class="project-content">
+                    <h3>AI Character Images</h3>
+                    <p>Developed a series of AI-generated character visualizations inspired by original story characters. This project bridges creative writing with digital art, bringing fictional personas to life through technology and imagination.</p>
+                    <div class="project-tags">
+                        <span class="tag">AI Art</span>
+                        <span class="tag">Character Design</span>
+                        <span class="tag">Storytelling</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="experience-card">
+            <div class="experience-header">
+                <h3>Subject Matter Expert - Quality Assurance</h3>
+                <p class="company">QA Solvers</p>
+                <p class="duration">2023 - 2024 | 1 Year</p>
+            </div>
+            <ul>
+                <li>Reviewed 500+ queries and content submissions monthly, maintaining 98% accuracy rate through systematic quality protocols</li>
+                <li>Reduced error detection time by 25% through implementation of streamlined review processes</li>
+                <li>Collaborated with cross-functional teams to resolve quality issues and improve content standards</li>
+                <li>Trained and mentored 3 junior team members on quality assurance best practices and guidelines</li>
+                <li>Created standardized documentation and quality checklists, improving team efficiency by 30%</li>
+                <li>Maintained 100% on-time delivery record while meeting strict quality benchmarks</li>
+            </ul>
+        </div>
+
+        <div class="experience-card">
+            <div class="experience-header">
+                <h3>Education</h3>
+                <p class="company">Bachelor of Arts (Program)</p>
+                <p class="duration">Rajdhani College, Delhi University | Graduated 2023</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <p style="color: #4a5568; margin-bottom: 2rem;">I'm always open to discussing new opportunities, collaborations, or just having a conversation about quality assurance and creative projects.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <a href="mailto:akansha016singh@gmail.com">akansha016singh@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <a href="tel:+919716199036">+91 97161 99036</a>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Keshav Puram, Delhi - 110035</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Akansha Singh. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Built with passion and precision.</p>
+    </footer>
+</body>
+</html>
